@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/drawable/background.xml" value="0.2385" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/drawable/background_buttonclear.xml" value="0.2385" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/drawable/background_clear_land.xml" value="0.2375" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/drawable/background_equals.xml" value="0.2335" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/drawable/background_equals_land.xml" value="0.2375" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/drawable/background_function.xml" value="0.2385" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/drawable/background_land.xml" value="0.2375" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/drawable/background_numbers.xml" value="0.2335" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/drawable/background_operation_land.xml" value="0.2375" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/layout-land/activity_main.xml" value="0.15888157894736843" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/layout-land/main2.xml" value="0.3034013605442177" />
+        <entry key="..\:/Android Projects/Calculator/app/src/main/res/layout/activity_main.xml" value="0.14671052631578949" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/Calculator/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2335" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/Calculator/app/src/main/res/drawable/background.xml" value="0.2385" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/Calculator/app/src/main/res/drawable/background_buttonclear.xml" value="0.2375" />
