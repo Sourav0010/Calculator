@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     // Declaring Final Strings
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Double op1 = null;
     private String pendingOp = "=";
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ResourceType", "InflateParams"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         Button percentageButton = findViewById(R.id.percentage);
         Button brackets = findViewById(R.id.buttonBracket);
 
+        //For The Scientific Operations Only
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
             //Scientific Operation Buttons
@@ -120,11 +123,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            //Pending......
             buttonSin.setOnClickListener(v -> {
                 try {
                     op1 = Double.parseDouble(result.getText().toString());
-                    Double result = (Double) Math.sin(Math.toRadians(op1));
+                    double result = Math.sin(Math.toRadians(op1));
                     newNumber.setText(Double.toString(result));
                     this.result.setText("");
                     op1 = null;
@@ -136,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             buttonCos.setOnClickListener(v -> {
                 try {
                     op1 = Double.parseDouble(result.getText().toString());
-                    Double result = (Double) Math.cos(Math.toRadians(op1));
+                    double result = Math.cos(Math.toRadians(op1));
                     newNumber.setText(Double.toString(result));
                     this.result.setText("");
                     op1 = null;
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             buttonTan.setOnClickListener(v -> {
                 try {
                     op1 = Double.parseDouble(result.getText().toString());
-                    Double result = (Double) Math.tan(Math.toRadians(op1));
+                    double result = Math.tan(Math.toRadians(op1));
                     newNumber.setText(Double.toString(result));
                     this.result.setText("");
                     op1 = null;
@@ -160,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             buttonLog.setOnClickListener(v -> {
                 try {
                     op1 = Double.parseDouble(result.getText().toString());
-                    Double result = (Double) Math.log(op1);
+                    double result = Math.log(op1);
                     newNumber.setText(Double.toString(result));
                     this.result.setText("");
                     op1 = null;
@@ -186,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        //Added OnClock Action For The Number Buttons....
+        //Added OnClick Action For The Number Buttons....
         View.OnClickListener onClickNumber = v -> {
             Button b = (Button) v;
             result.append(b.getText().toString());
@@ -205,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
         button9.setOnClickListener(onClickNumber);
         buttonDot.setOnClickListener(onClickNumber);
 
+        //Added onClick Action For Operation Buttons
         View.OnClickListener onClickOperation = v -> {
             Button b = (Button) v;
             String operation = b.getText().toString();
@@ -219,15 +222,16 @@ public class MainActivity extends AppCompatActivity {
             displayOperation.setText(pendingOp);
         };
 
+        //Assigning onClick Actions For Operation Buttons
         buttonEquals.setOnClickListener(onClickOperation);
         buttonDevide.setOnClickListener(onClickOperation);
         buttonMinus.setOnClickListener(onClickOperation);
         buttonPlus.setOnClickListener(onClickOperation);
         buttonMultiply.setOnClickListener(onClickOperation);
         percentageButton.setOnClickListener(onClickNumber);
-
-
         Button clearText = findViewById(R.id.clearText);
+
+
         clearText.setOnClickListener(v -> {
             newNumber.setText("");
             result.setText("");
@@ -281,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
                 str = result.getText().toString();
                 str = str.substring(0, str.length() - 1);
                 result.setText(str);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         });
 
@@ -359,7 +363,11 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         pendingOp = savedInstanceState.getString(SAVED_OPERATION);
         op1 = savedInstanceState.getDouble(SAVED_OPERAND);
-        displayOperation.setText(pendingOp);
+        if (Objects.equals(pendingOp, "=")) {
+            displayOperation.setText("");
+        } else {
+            displayOperation.setText(pendingOp);
+        }
     }
 
     @Override
